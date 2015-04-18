@@ -1,0 +1,73 @@
+<ion-view>
+    <ion-header-bar>
+    <div class="bar bar-header bar-positive">
+        <a href="#/home" class="icon ion-chevron-left"></a>
+        <a href="#/home"><img src="img/grumblIcon.svg" class="topLogo"></a> 
+    </div>
+    </ion-header-bar>
+      <ion-content has-bouncing="false">
+  
+      <ion-list class="complaintSect">
+        <div ng-init="one='one'" style="margin-top:16px;">
+          <ion-item class="item-stable item"
+                    ng-click="toggleGroup(one)" ng-class="{'exampleIt': isGroupShown(one)}">
+            <p>Title<i class="icon" ng-class="isGroupShown(one) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i></p>
+          </ion-item>
+         <ion-item class="item-accordion item text-center"
+                    ng-show="isGroupShown(one)"
+                    ng-class="{'exampleIt': isGroupShown(one)}">
+                    <p>{{complaint.title}}</a>
+                    <div class="imgWrapper" ng-show="cameraImage">
+		               <img ng-src="{{cameraImage}}">
+		            </div>
+          </ion-item>
+        </div>
+        <div ng-init="two='two'">
+          <ion-item class="item-stable item"
+                    ng-click="toggleGroup(two)" ng-class="{'exampleIt': isGroupShown(two)}">
+            <p>Location and Branch<i class="icon" ng-class="isGroupShown(two) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i></p>
+          </ion-item>
+         <ion-item class="item-accordion item text-center"
+                    ng-show="isGroupShown(two)"
+                    ng-class="{'exampleIt': isGroupShown(two)}">
+                     <p>{{complaint.company}}, {{complaint.location}}</p>
+          </ion-item>
+        </div>
+         <div ng-init="three='three'">
+          <ion-item class="item-stable item"
+                    ng-click="toggleGroup(three)" ng-class="{'exampleIt': isGroupShown(three)}">
+            <p>Description<i class="icon" ng-class="isGroupShown(three) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i></p>
+          </ion-item>
+         <ion-item class="item-accordion item text-center"
+                    ng-show="isGroupShown(three)"
+                    ng-class="{'exampleIt': isGroupShown(three)}">
+                     <p>{{complaint.description}}</p>
+          </ion-item>
+        </div>
+        <div ng-init="four='four'">
+          <ion-item class="item-stable item"
+                    ng-click="toggleGroup(four)" ng-class="{'exampleIt': isGroupShown(four)}">
+            <p>Comments
+                <span class="red" ng-show="!complaint.commentEntities.length">0</span>
+                <span class="red" ng-show="complaint.commentEntities.length">{{complaint.commentEntities.length}}</span>
+            </p>
+          </ion-item>
+         <ion-item class="item-accordion item"
+                    ng-show="isGroupShown(four)"
+                    ng-class="{'exampleIt': isGroupShown(four)}">
+           <div>   
+	           <p ng-repeat="comment in complaint.commentEntities" class="comment" ng-class="{'firstComment': checkNumber($index)}">
+	              {{$index + 1}}. {{comment.message}}
+	           </p>
+           </div>
+           <div class="text-center">
+	           <textarea style="height:80px;" name="message" ng-model="comment.message" placeholder="Add a Comment" required></textarea>
+           </div>
+           <button class="button button-block button-positive" ng-click="submitComment(comment)">Submit</button>
+          </ion-item>
+        </div>
+        
+      </ion-list>
+
+    </ion-content>
+</ion-view>

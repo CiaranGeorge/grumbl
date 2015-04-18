@@ -1,0 +1,69 @@
+<ion-view>
+<div class="register">
+      <div class="bar bar-header bar-positive">
+          <a href="#/login" class="icon ion-chevron-left"></a>
+          <a href="#/login"><img src="img/grumblIcon.png" class="topLogo"></a> 
+      </div>
+	<ion-content has-bouncing="false">
+		    <form class="list regform" id="registerForm" name="registerForm" >
+		        <!-- Username Validation-->
+		        <div id="usernameSection">
+		            <p class="errorText" ng-show="doesUserExist">This username already exists</p>
+		            <p class="errorText" ng-show="!registerForm.username.$pristine && registerForm.username.$invalid">Username must be between 4 and 12 characters</p>
+		            <label class="item item-input item-floating-label">
+		                <span class="input-label">Username</span>
+		                <input name="username" ng-model="user.username" ng-blur="checkUsername(user.username);" type="text" placeholder="Username" ng-minlength="4" ng-maxlength="12" required>
+		                <i ng-show="(doesUserExist === 'true') || (!registerForm.username.$pristine && registerForm.username.$invalid)" class="icon ion-close-circled"></i>
+		                <i ng-show="registerForm.username.$valid && doesUserExist==='false'" class="icon ion-checkmark-circled"></i>
+		            </label>
+		        </div>
+		        <div id="passwordSection">
+		            <p class="errorText" ng-show="!registerForm.password.$pristine && registerForm.password.$invalid">Password must be between 6 and 20 characters</p>
+		            <label class="item item-input item-floating-label">
+		                <span class="input-label">Password</span>
+		                <input name="password" ng-model="password.first" type="password" placeholder="Password" ng-minlength="6" ng-maxlength="20" required>
+		                <i ng-show="!registerForm.password.$pristine && registerForm.password.$invalid" class="icon ion-close-circled"></i>
+		                <i ng-show="registerForm.password.$valid" class="icon ion-checkmark-circled"></i>
+		            </label>
+		        </div>
+		        <div id="confirmPasswordSection">
+		            <p class="errorText" ng-show="!registerForm.confirmPassword.$pristine && !passwordsMatch">Passwords do not match</p>
+		            <label class="item item-input item-floating-label">
+		                <span class="input-label">Confirm Password</span>
+		                <input name="confirmPassword" ng-model="password.second" ng-change="comparePassword(password);" type="password" placeholder="Confirm Password" ng-minlength="6" ng-maxlength="20" required>
+		                <i ng-show="!registerForm.confirmPassword.$pristine && !passwordsMatch" class="icon ion-close-circled"></i>
+		                <i ng-show="registerForm.confirmPassword.$valid && passwordsMatch" class="icon ion-checkmark-circled"></i>
+		            </label>
+		        </div>
+		     <div id="firstnameSection">
+		     	 <p class="errorText" ng-show="!registerForm.firstname.$pristine && registerForm.firstname.$invalid">First Name does not meet the requirements (3-20 valid characters)</p>
+		         <label class="item item-input item-floating-label">
+		             <span class="input-label">First Name</span>
+		             <input name="firstname" type="text" placeholder="First Name" ng-model="user.firstname" ng-pattern="/^[A-Za-z\-\']{3,20}$/" required/>
+		             <span ng-show="!registerForm.firstname.$pristine && registerForm.firstname.$invalid" class="icon ion-close-circled"></span>
+		             <span ng-show="registerForm.firstname.$valid" class="icon ion-checkmark-circled"></span>
+		         </label>
+		     </div>
+		     <div id="lastnameSection">
+		     	<p class="errorText" ng-show="!registerForm.lastname.$pristine && registerForm.lastname.$invalid">Last Name does not meet the requirements (3-20 valid characters)</p>
+		         <label class="item item-input item-floating-label">
+		             <span class="input-label">Last Name</span>
+		             <input name="lastname" type="text" placeholder="Last Name" ng-model="user.lastname" ng-pattern="/^[A-Za-z\-\']{3,20}$/" required/>
+		             <span ng-show="!registerForm.lastname.$pristine && registerForm.lastname.$invalid" class="icon ion-close-circled"></span>
+		             <span ng-show="registerForm.lastname.$valid" class="icon ion-checkmark-circled"></span>
+		         </label>
+		     </div>
+		     <div id="emailAddress">
+		     	<p class="errorText" ng-show="!registerForm.email.$pristine && registerForm.email.$invalid">This is not a valid email address</p>
+		         <label class="item item-input item-floating-label">
+		             <span class="input-label">Email</span>
+		             <input name="email" type="email" placeholder="Email Address" ng-model="user.email" required/>
+		             <span ng-show="!registerForm.email.$pristine && registerForm.email.$error.required || !registerForm.email.$pristine && registerForm.email.$error.email" class="icon ion-close-circled"></span>
+		             <span ng-show="registerForm.email.$valid" class="icon ion-checkmark-circled"></span>
+		         </label>
+		     </div>
+		     <button class="button button-block button-positive regButton green" ng-click="createUser(registerForm,user,password)" ng-disabled="registerForm.$invalid || doesUserExist === 'true' || !passwordsMatch">Create User</button>
+		 </form>
+ 	</ion-content>
+</div>
+</ion-view>

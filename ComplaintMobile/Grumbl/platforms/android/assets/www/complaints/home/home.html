@@ -1,0 +1,50 @@
+<ion-view>
+<ion-side-menus>
+  <!-- Center content -->
+  <ion-side-menu-content>
+    <div class="home">
+      <div class="bar bar-header bar-positive">
+          <img src="img/grumblIcon.png" class="topLogo">
+          <i class="icon ion-navicon-round" menu-toggle="right"></i>
+      </div>
+
+  <ion-content has-bouncing="false">
+  
+      <ion-list>
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable item {{group.color}}"
+                    ng-click="toggleGroup(group)" ng-class="{'exampleIt': isGroupShown(group)}">
+            <p>{{group.status}}<i class="icon" ng-class="isGroupShown(group) ? 'ion-arrow-down-b' : 'ion-arrow-right-b'"></i></p>
+          </ion-item>
+         <ion-item class="item-accordion item {{group.color}}"
+                    ng-repeat="complaint in group.complaints"
+                    ng-show="isGroupShown(group)"
+                    ng-class="{'exampleIt': isGroupShown(group)}">
+                    <a class="comLink" style="color:black;" href="#/complaint/{{complaint.id}}">{{complaint.title}}</a>
+          </ion-item>
+          <ion-item class="item-accordion item {{group.color}}"
+                    ng-show="isGroupShown(group) && group.complaints.length === 0 && userDetails"
+                    ng-class="{'exampleIt': isGroupShown(group)}">
+                    <p style="color:black;padding:20px;">You have no complaints in this category</p>
+          </ion-item>
+          
+        </div>
+      </ion-list>
+
+    </ion-content>
+    </div>
+  </ion-side-menu-content>
+  <ion-side-menu side="right" class="theRight">
+    <ion-content>
+       <div class="bar bar-header bar-positive">
+            <i class="icon ion-android-contact topLogo"></i> <p class="userProf">{{userDetails.firstname}} {{userDetails.lastname}}</p>
+      </div>
+      <ion-list class="sideList">
+        <ion-item ng-click="createGrumbl()"><i class="icon ion-chatbubble"></i>Create Grumbl</ion-item>
+        <ion-item ng-click="changePass()"><i class="icon ion-locked"></i>Change Password</ion-item>
+        <ion-item ng-click="logout()"><i class="icon ion-log-out"></i> Logout</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+</ion-view>

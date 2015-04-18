@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" ng-app="complaints">
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/app.css"/>
+  <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Changa+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Gorditas' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <pane nav-router animation="slide-left-right">
+        <ion-nav-view id="main"></ion-nav-view>
+  </pane>
+
+  <!-- build:js lib/ionic.bundle.min.js --> 
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <!-- /build -->
+  
+  <!-- build:js lib/ng-cordova.min.js --> 
+  <script src="lib/ionic/js/ng-cordova.js"></script>
+  <!-- /build -->
+  <script type="text/javascript" src="cordova.js"></script>
+  
+  <!-- All of the files listed below will be minified -->
+  <script src="lib/openfb-angular.js"></script>
+  <!-- build:js complaints.min.js--> 
+  
+  <script src="complaints/app.js"></script>
+  <script src="complaints/authInterceptor.js"></script>
+  <script src="complaints/watchHeight.js"></script>
+  
+  <script src="complaints/login/js/LoginController.js"></script>
+  <script src="complaints/login/js/LoginService.js"></script>
+  
+  <script src="complaints/home/js/HomeController.js"></script>
+  <script src="complaints/home/js/HomeService.js"></script>
+
+  <script src="complaints/register/js/RegisterController.js"></script>
+  <script src="complaints/register/js/RegisterService.js"></script>
+
+  <script src="complaints/reset/js/ResetController.js"></script>
+  <script src="complaints/reset/js/ResetService.js"></script>
+  
+  <script src="complaints/create/js/CreateController.js"></script>
+  <script src="complaints/create/js/CreateService.js"></script>
+ 
+  <script src="complaints/complaint/js/ComplaintController.js"></script>
+  <script src="complaints/complaint/js/ComplaintService.js"></script>
+  
+  <script src="complaints/changePassword/js/ChangePasswordController.js"></script>
+  <script src="complaints/changePassword/js/ChangePasswordService.js"></script>
+  
+  <!-- /build -->
+  
+  <script type="text/javascript">
+            app.initialize();
+  </script>
+</body>
+</html>

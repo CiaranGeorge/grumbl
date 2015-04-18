@@ -1,0 +1,56 @@
+<ion-view>
+	<div class="create">
+      <div class="bar bar-header bar-positive">
+          <a href="#/home" class="icon ion-chevron-left"></a>
+          <a href="#/home"><img src="img/grumblIcon.svg" class="topLogo"></a> 
+      </div>
+		<ion-content has-bouncing="false">
+		<form class="list regform"	id="" name="createForm" >
+			<h5><strong>Tell us about your problem!</strong></h5>
+			<div id="titleSection">
+			     <p class="errorText" ng-show="!createForm.title.$pristine && createForm.title.$invalid">Summary must be between 4 and 50 characters</p>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Summary</span>
+					<input name="title" ng-model="complaint.title" type="text" placeholder="Summary" ng-minlength="4" ng-maxlength="50" required>
+					<i ng-show="!createForm.title.$pristine && createForm.title.$invalid" class="icon ion-close-circled"></i>
+                    <i ng-show="createForm.title.$valid" class="icon ion-checkmark-circled"></i>
+				</label>
+			</div>
+			<div id="companySection">
+			    <p class="errorText" ng-show="!createForm.company.$pristine && createForm.company.$invalid">Company must be between 2 and 20 characters</p>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Company</span>
+					<input name="company" ng-model="complaint.company" type="text" placeholder="Company"  ng-minlength="2" ng-maxlength="30" required>
+					<i ng-show="!createForm.company.$pristine && createForm.company.$invalid" class="icon ion-close-circled"></i>
+                    <i ng-show="createForm.company.$valid" class="icon ion-checkmark-circled"></i>
+				</label>
+			</div>
+			<div id="locationSection">
+			     <p class="errorText" ng-show="!createForm.location.$pristine && createForm.location.$invalid">Location must be between 4 and 30 characters</p>
+				<label class="item item-input item-floating-label">
+					<span class="input-label">Branch/Location</span>
+					<input name="location" ng-model="complaint.location" type="text" placeholder="Branch/Location"  ng-minlength="4" ng-maxlength="30" required>
+					<i ng-show="!createForm.location.$pristine && createForm.location.$invalid" class="icon ion-close-circled"></i>
+                    <i ng-show="createForm.location.$valid" class="icon ion-checkmark-circled"></i>
+				</label>
+			</div>
+			<div id="locationSection">
+			    <p class="errorText" ng-show="!createForm.description.$pristine && createForm.description.$invalid">Location must be between 10 and 250 characters</p>
+				<label class="item item-input item-floating-label" style="height:120px !important;">
+					<span class="input-label">Description</span>
+					<textarea style="height:120px !important;" name="description" ng-model="complaint.description" placeholder="Description" ng-minlength="10" ng-maxlength="250" required></textarea>
+					<i  style="bottom:115px !important;" ng-show="!createForm.description.$pristine && createForm.description.$invalid" class="icon ion-close-circled"></i>
+                    <i style="bottom:115px !important;" ng-show="createForm.description.$valid" class="icon ion-checkmark-circled"></i>
+				</label>
+			</div>
+			<div class="container">
+				<button class="createButton button button-positive orange" ng-click="takePicture()"><i class="icon ion-android-camera"></i></button>
+				<button class="createButton button button-positive green" ng-click="getImage()"><i class="icon ion-document-text"></i></button>
+			</div>
+			<button class="imageButton button button-positive teal" ng-show="cameraImage" ng-click="loadImagePopup()">Show me the image.</button> 
+		
+			<button class="button button-block button-positive button-sub" ng-disabled="createForm.$invalid" ng-click="submitComplaint(complaint)">Submit</button> 
+		</form>
+		</ion-content>
+	</div>
+</ion-view>

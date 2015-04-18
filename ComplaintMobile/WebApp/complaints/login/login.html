@@ -1,0 +1,24 @@
+<ion-view>
+<ion-content>
+<article class="login" height-target>
+	<img src="img/grumbl.png">
+	<section class="details list list-inset">
+		<label class="item item-input" ng-class="{submitted: submitted}" ng-disabled="submitted">
+			<i class="icon ion-person"></i><input type="text" placeholder="Username" ng-model="user.username"
+			ng-disabled="submitted" ng-class="{submitted: submitted}"/>
+		</label>
+		<label class="item item-input" ng-class="{submitted: submitted}" ng-disabled="submitted">
+			<i class="icon ion-locked"></i><input type="password" placeholder="Password" ng-model="user.password"
+			ng-disabled="submitted" ng-class="{submitted: submitted}">
+		</label>
+	</section>
+	<p ng-show="errorText" class="errorText">{{errorText}}</p>
+	<section class="items">
+		<button class="button button-block button-positive" ng-click="authenticate(user)">Login</button>
+		<p><a href="#/reset">Forgot your Username/Password</a></p>
+		<button style="background-color:#2D4473;margin-top:40px;" class="button button-block button-positive" ng-click="facebookLogin()">Login with Facebook</button>
+	</section>
+	<a class="registerButton" href="#/register"><span>Create an account</span></a>
+</article>
+</ion-content>
+</ion-view>

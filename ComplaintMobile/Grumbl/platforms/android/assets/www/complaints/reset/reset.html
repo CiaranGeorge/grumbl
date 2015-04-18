@@ -1,0 +1,44 @@
+<ion-view>
+<div class="reset">
+      <div class="bar bar-header bar-positive">
+          <a href="#/login" class="icon ion-chevron-left"></a>
+          <a href="#/login"><img src="img/grumblIcon.png" class="topLogo"></a> 
+      </div>
+	
+	<div class="tabs-striped tabs-top tabs-background-positive tabs-light">
+	    <div class="tabs">
+	      <a class="tab-item orange" href="" ng-click="previousPage()">
+	        <i class="icon ion-person"></i>
+	      </a>
+	      <a class="tab-item green" href="" ng-click="nextPage()">
+	        <i class="icon ion-locked"></i>
+	      </a>
+	    </div>
+	  </div>
+	  <p ng-show="selected==='username'" class="arrow-down arrow-orange"></p>
+	  <p ng-show="selected==='password'" class="arrow-down arrow-green"></p>
+	  
+  <ion-slide-box ng-init="disableSwipe()">
+    <ion-slide>
+    	<form id="resetData" name="forgotUser">
+    		<h5>Enter your email address to obtain your username:</h5>
+			<label class="item item-input item-floating-label">
+	       		<span class="input-label">Email</span>
+				<input name="email" ng-model="email" type="email" placeholder="Email" required>
+			</label>
+			<button class="button button-block button-positive regButton orange" ng-click="usernameReminder(email)" ng-disabled="forgotUser.$invalid">Submit</button>
+		</form>
+	</ion-slide>
+	<ion-slide>
+		<form id="resetData" name="forgotPassword">
+    		<h5>Enter your username to reset the password:</h5>
+			<label class="item item-input item-floating-label">
+	       		<span class="input-label">Username</span>
+				<input name="username" ng-model="username" type="text" placeholder="Username" ng-minlength="4" ng-maxlength="12" required>
+			</label>
+			<button class="button button-block button-positive regButton green" ng-click="resetPassword(username)" ng-disabled="forgotPassword.$invalid">Submit</button>
+		</form>
+    </ion-slide>
+  </ion-slide-box>
+</div>
+</ion-view>
